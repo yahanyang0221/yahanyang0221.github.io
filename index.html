@@ -2,98 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yahan Yang - Portfolio</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background-color: #333;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .profile {
-            text-align: center;
-            padding: 20px;
-        }
-        .profile img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-        }
-        .profile h1 {
-            margin-bottom: 5px;
-        }
-        .buttons a {
-            text-decoration: none;
-            color: white;
-            background-color: #4CAF50;
-            padding: 10px 20px;
-            border-radius: 5px;
-            margin: 5px;
-            display: inline-block;
-        }
-        .section {
-            padding: 20px;
-            border-bottom: 1px solid #eee;
-        }
-        .section:last-child {
-            border-bottom: none;
-        }
-        .section h2 {
-            margin-bottom: 15px;
-            color: #4CAF50;
-        }
-    </style>
+    <link rel="stylesheet" href="assets/main.css">
+    <link rel="icon" type="image/svg+xml" href="public/favicon.svg">
 </head>
 <body>
-
-<header>
-    <h1>Yahan Yang's Portfolio</h1>
-</header>
-
-<div class="container">
-    <div class="profile">
-        <img src="me.jpg" alt="Yahan Yang">
+    <header>
         <h1>Yahan Yang</h1>
-        <p>Carnegie Mellon University<br>M.S. in Applied Data Science</p>
-        <div class="buttons">
-            <a href="https://github.com/yahanyang0221" target="_blank">GitHub</a>
-            <a href="https://linkedin.com/in/yahanyang0221" target="_blank">LinkedIn</a>
-            <a href="mailto:your-email@example.com">Email</a>
-            <a href="resume.pdf" target="_blank">CV</a>
+        <p>Master's Student in Applied Data Science at CMU</p>
+        <img src="public/me.jpg" alt="Yahan Yang" class="profile-pic">
+        <div class="links">
+            <a href="https://github.com/yahanyang0221">GitHub</a>
+            <a href="https://linkedin.com/in/yahanyang0221">LinkedIn</a>
+            <a href="mailto:yahan@example.com">Email</a>
+            <a href="public/resume.pdf">Resume</a>
         </div>
-    </div>
+    </header>
 
-    <div class="section">
-        <h2>About Me</h2>
-        <p>I am pursuing my M.S. in Applied Data Science at Carnegie Mellon University. My passion lies in data analysis, machine learning, and data-driven decision-making. I have hands-on experience in building models, conducting research, and presenting insights effectively.</p>
-    </div>
+    <main>
+        <!-- Include the About Me section -->
+        <section id="about"></section>
 
-    <div class="section">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>UFO Sightings Analysis:</strong> A deep dive into UFO sightings across the United States using R and visualization techniques.</li>
-            <li><strong>Wine Quality Prediction:</strong> Built machine learning models to predict wine quality based on chemical compositions.</li>
-            <li><strong>Retail Revenue Optimization:</strong> Designed A/B experiments to optimize value-add sales in retail settings.</li>
-        </ul>
-    </div>
-</div>
+        <!-- Include the Projects section -->
+        <section id="projects"></section>
 
+        <!-- Include the Contact section -->
+        <section id="contact"></section>
+    </main>
+
+    <script>
+        // Dynamically load sections
+        async function loadSection(id, file) {
+            const response = await fetch(file);
+            const content = await response.text();
+            document.getElementById(id).innerHTML = content;
+        }
+        loadSection('about', 'sections/about.html');
+        loadSection('projects', 'sections/projects.html');
+        loadSection('contact', 'sections/contact.html');
+    </script>
 </body>
 </html>
